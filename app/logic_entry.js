@@ -1,5 +1,7 @@
+var requirejs = require('requirejs');
+
 requirejs.config({
-    baseUrl: 'app',
+    baseUrl: "app",
     paths: {
         // lib path (external libs)
         jquery: 'lib/jquery.min',
@@ -10,7 +12,13 @@ requirejs.config({
         drag_drop: 'myLib/drag_drop/drag_drop',
         inline_styles: 'myLib/inline_styles',
         helper_lib: 'myLib/helper_lib',
-        test: 'mylib/test',
+        test: 'test',
         write_anywhere: 'myLib/write_anywhere/write_anywhere'
-    }
-});
+    },
+    nodeRequire: require
+})
+
+const dd = requirejs('drag_drop')
+const wa = requirejs('write_anywhere')
+dd.listeners.evListener()
+wa.listeners.evListener()

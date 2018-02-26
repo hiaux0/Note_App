@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Note App </title>
+        <!-- ======================= v For context menu v ======================= -->
+        <!-- <link rel="stylesheet" href="/Users/hdn/Desktop/Coding/Helper/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="/stylesheets/master.css">
+        <link rel="stylesheet" href="/stylesheets/slider.css">
+        <link rel="stylesheet" href="/jquery-contextmenu/dist/jquery.contextMenu.min.css">
+        <!-- ======================= ^ For context menu ^ ======================= -->
+
+    </head>
+    <body>
+
+<div>
+    <a href="">Reset</a>
+</div>
+
+<!-- =============================== v My HTML v =============================== -->
+
+<div id="container" class="dropable write-anywhere"> 567
+
+
+</div>
+
+
+<!-- =============================== ^ My HTML ^ =============================== -->
+
+
+<!-- ============================ v Require Setup Start v ============================ -->
+
+    <!-- <script type="text/javascript" src="app.js"></script> -->
+
+        <script type="text/javascript"  src="/lib/require.js"></script>
+        <script type="text/javascript">
+            require.config({
+                paths: {
+                    // lib path (external libs)
+                    jquery: 'lib/jquery.min',
+                    context_menu_lib: 'lib/jquery.contextMenu',
+                    // app path (my js)
+                    app_helper: 'myLib/app_helper/app_helper',
+                    context_menu_logic: 'myLib/context_menu/cm_logic',
+                    drag_drop: 'myLib/drag_drop/drag_drop',
+                    inline_styles: 'myLib/inline_styles',
+                    helper_lib: 'myLib/helper_lib',
+                    test: 'mylib/test',
+                    write_anywhere: 'myLib/write_anywhere/write_anywhere'
+                }
+            })
+            
+            requirejs(['drag_drop','write_anywhere'], function(dd,wa) {
+                dd = requirejs('drag_drop')
+                wa = requirejs('write_anywhere')
+                dd.listeners.evListener()
+                wa.listeners.evListener()
+            })
+
+
+
+
+            // require(['config'], function() {
+            //     // cm functionality
+            //     require(['myLib/context_menu/context_menu'])
+            //     require(['app'])
+            //     // TODO: Since this is only a helper lib, do I need this require here? Is is better to rather include it only in app.js, since app.js is main js file. Same with context_menu
+            //     // require(['myLib/inline_styles'])
+            // })
+        </script>
+
+<!-- ============================ ^ Require Setup End ^ ============================ -->
+    </body>
+</html>
